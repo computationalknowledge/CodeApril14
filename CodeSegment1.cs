@@ -12,7 +12,7 @@ namespace DataStructures
         static void Main(string[] args)
         {
             Worker w = new Worker();
-            w.ProcessText(w.GetUserInput());
+            Console.WriteLine("The sum of the letter's number values is {0}", w.ProcessText(w.GetUserInput()));
         }
     }
 
@@ -59,12 +59,21 @@ namespace DataStructures
         {
             return Console.ReadLine();
         }
-        public void ProcessText(String inputString)
+        public int ProcessText(String inputString)
         {
+            int sum = 0;
             for (int i = 0; i < inputString.Length; i++)
             {
-                Console.WriteLine( dict[inputString[i]] );
+                //  we can treat a STRING like an ARRAY
+                //  whatever we do with a STRING we can do with an ARRAY
+
+                // but how to handle a CAPITAL Letter as an INPUT ??
+                // we give the dictionary a KEY: it returns a VALUE
+                Console.WriteLine( dict[Char.ToLower(inputString[i])] );
+                // let's calculate the SUM of all the Letter number values
+                sum += dict[Char.ToLower(inputString[i])]; 
             }
+            return sum; 
         }
 
     }
